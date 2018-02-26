@@ -37,14 +37,14 @@
       "scripts/cleanup.sh", 
       "scripts/common/minimize.sh",
       "scripts/fedora/bootstrap.sh"
-    ]
-  },{
+    ]},
+    {
     "type": "salt-masterless",
     "local_state_tree": "./salt",
     "minion_config": "./salt/minion",
-    "log_level": "debug",
-
-  }],
+    "log_level": "debug"
+    }
+  ],
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
