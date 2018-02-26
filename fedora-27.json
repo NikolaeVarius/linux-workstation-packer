@@ -1,0 +1,64 @@
+{
+  "builders": [{
+    "type": "virtualbox-iso",
+    "guest_os_type": "Fedora_64",
+    "iso_url": "{{user `mirror`}}/releases/27/Workstation/x86_64/iso/Fedora-Workstation-netinst-x86_64-27-1.6.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-fedora-27-x86_64-{{build_type}}",
+    "vm_name": "packer-fedora-27-x86_64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "5s",
+    "boot_command": [
+      "<tab> ",
+      "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/anaconda-ks.cfg ",
+      "biosdevname=0 ",
+      "net.ifnames=0 ",
+      "<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo systemctl poweroff",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/virtualbox.sh",
+      "scripts/common/vagrant.sh",
+      "scripts/common/sshd.sh",
+      "scripts/fedora/update.sh",
+      "scripts/cleanup.sh", 
+      "scripts/common/minimize.sh",
+      "scripts/fedora/bootstrap.sh"
+    ]
+  },{
+    "type": "salt-masterless",
+    "local_state_tree": "./salt",
+    "minion_config": "./salt/minion",
+    "log_level": "debug",
+
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "compression_level": "{{user `compression_level`}}",
+    "output": "fedora-27-x86_64-{{.Provider}}.box"
+  }],
+  "variables": {
+    "compression_level": "6",
+    "cpus": "1",
+    "disk_size": "40000",
+    "headless": "false",
+    "iso_checksum": "18ef4a6f9f470b40bd0cdf21e6c8f5c43c28e3a2200dcc8578ec9da25a6b376b",
+    "iso_checksum_type": "sha256",
+    "memory": "2048",
+    "mirror": "https://download.fedoraproject.org/pub/fedora/linux",
+    "ssh_timeout": "60m"
+  }
+}

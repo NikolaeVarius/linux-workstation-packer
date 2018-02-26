@@ -1,0 +1,4 @@
+# Ignore VirtualBox Outputs
+output*
+packer_cache/
+*.box
