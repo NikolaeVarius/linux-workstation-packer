@@ -5,7 +5,7 @@
     "iso_url": "{{user `mirror`}}/releases/27/Workstation/x86_64/iso/Fedora-Workstation-netinst-x86_64-27-1.6.iso",
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
-    "output_directory": "output-fedora-27-x86_64-{{build_type}}",
+    "output_directory": "output/fedora-27-x86_64-{{build_type}}",
     "vm_name": "packer-fedora-27-x86_64",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
@@ -33,7 +33,6 @@
       "scripts/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/fedora/update.sh",
       "scripts/cleanup.sh", 
       "scripts/common/minimize.sh",
       "scripts/fedora/bootstrap.sh"
@@ -41,7 +40,7 @@
     {
     "type": "salt-masterless",
     "local_state_tree": "./salt",
-    "minion_config": "./salt/minion",
+    "minion_config": "./config/minion",
     "log_level": "debug"
     }
   ],

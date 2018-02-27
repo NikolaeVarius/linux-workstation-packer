@@ -1,4 +1,4 @@
 # Ignore VirtualBox Outputs
-output*
+output/
 packer_cache/
 *.box
