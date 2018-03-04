@@ -3,5 +3,5 @@ base_packages:
     - names:
       - htop
       - strace
-      - vim
+      - vim-enhanced
       - ntp

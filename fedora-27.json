@@ -33,9 +33,9 @@
       "scripts/virtualbox.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
-      "scripts/cleanup.sh", 
       "scripts/common/minimize.sh",
-      "scripts/fedora/bootstrap.sh"
+      "scripts/fedora/bootstrap.sh",
+      "scripts/cleanup.sh"
     ]},
     {
     "type": "salt-masterless",
@@ -47,7 +47,8 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "fedora-27-x86_64-{{.Provider}}.box"
+    "output": "ouput/fedora-27-x86_64-{{.Provider}}.box",
+    "keep_input_artifact": true
   }],
   "variables": {
     "compression_level": "6",
