@@ -1,4 +1,4 @@
-golang:
+utils:
   pkg.installed:
     - names:
-      - golang
+      - unzip

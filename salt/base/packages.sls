@@ -5,3 +5,6 @@ base_packages:
       - strace
       - vim-enhanced
       - ntp
+      - curl
+      - wget
+      - openssh

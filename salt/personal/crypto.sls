@@ -1,4 +1,4 @@
-golang:
+keybase:
   pkg.installed:
     - names:
-      - golang
+      - keybase

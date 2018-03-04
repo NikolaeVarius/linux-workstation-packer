@@ -1,6 +1,6 @@
 users:
   jkim:
-    fullname: Joe Kim
+    fullname: jkim
     uid: 5000
     gid: 5000
     shell: /bin/bash
@@ -9,4 +9,4 @@ users:
       - wheel
       - admin
     password:
-    enforce_password: True
+    enforce_password: false

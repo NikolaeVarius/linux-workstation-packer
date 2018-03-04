@@ -6,7 +6,7 @@
     "iso_checksum": "{{user `iso_checksum`}}",
     "iso_checksum_type": "{{user `iso_checksum_type`}}",
     "output_directory": "output/fedora-27-x86_64-{{build_type}}",
-    "vm_name": "packer-fedora-27-x86_64",
+    "vm_name": "packer-fedora-27-x86_64_{{\"2006-01-02\"}}",
     "disk_size": "{{user `disk_size`}}",
     "headless": "{{user `headless`}}",
     "http_directory": "http",
@@ -41,18 +41,19 @@
     "type": "salt-masterless",
     "local_state_tree": "./salt",
     "minion_config": "./config/minion",
-    "log_level": "debug"
+    "log_level": "debug",
+    "no_exit_on_failure": false
     }
   ],
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "ouput/fedora-27-x86_64-{{.Provider}}.box",
+    "output": "output/fedora-27-x86_64-{{.Provider}}_{{\"2006-01-02\"}}.box",
     "keep_input_artifact": true
   }],
   "variables": {
     "compression_level": "6",
-    "cpus": "1",
+    "cpus": "2",
     "disk_size": "40000",
     "headless": "false",
     "iso_checksum": "18ef4a6f9f470b40bd0cdf21e6c8f5c43c28e3a2200dcc8578ec9da25a6b376b",

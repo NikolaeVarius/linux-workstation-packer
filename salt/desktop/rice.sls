@@ -1,4 +1,4 @@
-golang:
+rice:
   pkg.installed:
     - names:
-      - golang
+      - arc-theme

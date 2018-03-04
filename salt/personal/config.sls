@@ -1,4 +1,4 @@
-golang:
+config:
   pkg.installed:
     - names:
-      - golang
+      - config

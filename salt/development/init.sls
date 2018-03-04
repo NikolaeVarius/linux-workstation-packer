@@ -1,2 +1,4 @@
 include:
-  - base.base
+  - development.base
+  - development.golang
+  - development.git

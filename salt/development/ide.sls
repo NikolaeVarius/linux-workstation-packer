@@ -9,3 +9,5 @@ vscode-repo:
     - gpgcheck: 1
     - gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     - enabled: 1
+    - require:
+        - cmd: vscode-repo-key

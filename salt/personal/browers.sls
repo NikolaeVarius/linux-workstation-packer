@@ -1,4 +1,4 @@
-golang:
+browsers:
   pkg.installed:
     - names:
-      - golang
+      - chromium

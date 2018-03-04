@@ -3,3 +3,5 @@ base:
     - names:
       - tmux
       - rofi
+      - VirtualBox
+      - wine
